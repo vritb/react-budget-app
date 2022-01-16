@@ -1,9 +1,72 @@
 # Getting Started with Create React App
 
-## Acknowledgement 
+## Acknowledgement
+
 This project was forked from [WebDevSimplified/Kyle](https://github.com/WebDevSimplified/react-budget-app.git).
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+## Installation
+
+1. Install create-react-app
+   
+    ```sh
+    npm install -g create-react-app
+    ```
+
+2. Install Bootstrap
+
+    The application uses _Bootstrap_ for UI components and layout. We also need the _react_ adaption to bootstrap.
+
+    ```sh
+    npm install --save react-bootstrap bootstrap@5.1.3
+    ```
+
+3. Install Dependent Modules
+
+    ```sh
+    npm install
+    ```
+
+## Verify Successful Intallation
+
+Start the webapp via _npm_.
+
+```sh
+npm start
+```
+
+Your default browser should open and display the following:
+
+![Intial Screen](img/react-budget-app-initial-screen.jpg)
+
+## Running The App In Production Mode 
+
+1. Install A Server
+
+    ```sh
+    npm install -g serve
+    ```
+
+1. Build Prodction App
+
+    ```sh
+    npm run build
+    ```
+
+1. Run The Server From build directory
+
+    ```sh
+    serve -s build
+    ```
+
+The console will show:
+
+![Serving Production Build](img/react-budget-app-serve-production.jpg)
+
+1. Your Browser Shows
+
+![Sample Budgets](img/react-budget-app-sample-budgets-screen.jpeg)
 
 ## Available Scripts
 
@@ -16,6 +79,8 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
+
+![ServingProductionBuild](img/react-budget-app-sample-budgets-screen.jpeg)
 
 ### `npm test`
 
