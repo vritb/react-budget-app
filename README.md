@@ -1,7 +1,7 @@
 # Getting Started with Create React App
 
 ## Acknowledgement 
-This project was forked from [WebDevSimplified]/Kyle](https://github.com/WebDevSimplified/react-budget-app.git).
+This project was forked from [WebDevSimplified/Kyle](https://github.com/WebDevSimplified/react-budget-app.git).
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
