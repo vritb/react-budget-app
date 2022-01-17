@@ -68,6 +68,20 @@ The console will show:
 
 ![Sample Budgets](img/react-budget-app-sample-budgets-screen.jpeg)
 
+## Ready To Migrate
+
+The migration will be done according to the steps listed in [React Docs](https://create-react-app.dev/docs/adding-typescript).
+
+1. Step: Install typescript to your project
+   npm install --save typescript @types/node @types/react @types/react-dom @types/jest
+
+2. Step: Change File Extension (.js->tsx)
+
+   
+---------------------------------------
+Original Create-React-App Documentation
+----------------------------------------
+
 ## Available Scripts
 
 In the project directory, you can run:

@@ -7,18 +7,18 @@ export default function AddExpenseModal({
   handleClose,
   defaultBudgetId,
 }) {
-  const descriptionRef = useRef()
-  const amountRef = useRef()
-  const budgetIdRef = useRef()
+  const descriptionRef = useRef<HTMLInputElement>(null)
+  const amountRef = useRef<HTMLInputElement>(null)
+  const budgetIdRef = useRef<HTMLSelectElement>(null)
   const { addExpense, budgets } = useBudgets()
 
   function handleSubmit(e) {
     e.preventDefault()
     addExpense({
-      description: descriptionRef.current.value,
-      amount: parseFloat(amountRef.current.value),
-      budgetId: budgetIdRef.current.value,
-    })
+      description: descriptionRef.current?.value,
+      amount: (!amountRef.current) ? NaN : parseFloat(amountRef.current?.value),
+      budgetId: budgetIdRef.current?.value
+    });
     handleClose()
   }
 

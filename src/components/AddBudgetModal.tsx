@@ -3,14 +3,15 @@ import { useRef } from "react"
 import { useBudgets } from "../contexts/BudgetsContext"
 
 export default function AddBudgetModal({ show, handleClose }) {
-  const nameRef = useRef()
-  const maxRef = useRef()
+  const nameRef = useRef<HTMLInputElement>(null);
+  const maxRef = useRef<HTMLInputElement>(null);
   const { addBudget } = useBudgets()
+
   function handleSubmit(e) {
     e.preventDefault()
     addBudget({
-      name: nameRef.current.value,
-      max: parseFloat(maxRef.current.value),
+      name: nameRef.current?.value,
+      max: (!maxRef.current) ? NaN : parseFloat(maxRef.current?.value),
     })
     handleClose()
   }
