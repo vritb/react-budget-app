@@ -1,22 +1,24 @@
 import React, { useContext } from "react";
+import {useLocalStorage} from "usehooks-ts";
 import { v4 as uuidV4 } from "uuid";
-import useLocalStorage from "../hooks/useLocalStorage";
+//import useLocalStorage from "../hooks/useLocalStorage";
 
-export interface BudgetInterface {
-  id: uuidV4;
-  name: String;
+export type Budget = {
+  id: string;
+  name: string;
   max: number;
 }
 
-export interface ExpenseInterface {
-  description: String;
+export type Expense = {
+  id: string;
+  description: string;
   amount: number;
-  budgetId: uuidV4;
+  budgetId: string;
 }
 
 interface BudgetsContextInterface {
-  budgets: BudgetInterface[];
-  expenses: ExpenseInterface[];
+  budgets: Budget[];
+  expenses: Expense[];
   getBudgetExpenses;
   addExpense;
   addBudget;
@@ -35,19 +37,19 @@ export function useBudgets() {
 }
 
 export const BudgetsProvider = ({ children }) => {
-  const [budgets, setBudgets] = useLocalStorage("budgets", []);
-  const [expenses, setExpenses] = useLocalStorage("expenses", []);
+  const [budgets, setBudgets] = useLocalStorage<Budget[]>("budgets", []);
+  const [expenses, setExpenses] = useLocalStorage<Expense[]>("expenses", []);
 
-  function getBudgetExpenses(budgetId) {
-    return expenses.filter((expense) => expense.budgetId === budgetId);
+  function getBudgetExpenses(budgetId:string) {
+    return (expenses as Expense[]).filter((expense:Expense) => expense.budgetId === budgetId);
   }
-  function addExpense({ description, amount, budgetId }) {
-    setExpenses((prevExpenses) => {
+  function addExpense({ description, amount, budgetId} : Expense) {
+    setExpenses(prevExpenses => {
       return [...prevExpenses, { id: uuidV4(), description, amount, budgetId }];
     });
   }
-  function addBudget({ name, max }) {
-    setBudgets((prevBudgets) => {
+  function addBudget({ name, max } : Budget) {
+    setBudgets((prevBudgets : Budget[]) => {
       if (prevBudgets.find((budget) => budget.name === name)) {
         return prevBudgets;
       }
@@ -55,19 +57,20 @@ export const BudgetsProvider = ({ children }) => {
     });
   }
   function deleteBudget({ id }) {
-    setExpenses((prevExpenses) => {
+    setExpenses((prevExpenses : Expense[]) => {
       return prevExpenses.map((expense) => {
         if (expense.budgetId !== id) return expense;
         return { ...expense, budgetId: UNCATEGORIZED_BUDGET_ID };
       });
     });
 
-    setBudgets((prevBudgets) => {
+    setBudgets((prevBudgets : Budget[]) => {
       return prevBudgets.filter((budget) => budget.id !== id);
     });
   }
+
   function deleteExpense({ id }) {
-    setExpenses((prevExpenses) => {
+    setExpenses((prevExpenses : Expense[]) => {
       return prevExpenses.filter((expense) => expense.id !== id);
     });
   }

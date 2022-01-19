@@ -11,7 +11,7 @@ export default function BudgetCard({
   onAddExpenseClick,
   onViewExpensesClick,
 }) {
-  let classNames: String[] = [];
+  let classNames: string[] = [];
   if (amount > max) {
     classNames.push("bg-danger");
     classNames.push("bg-opacity-10");
