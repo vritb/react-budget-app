@@ -141,7 +141,7 @@ interface BudgetsContextInterface {
 ```
 
 The context now holds typed properties for budget and expense entities.
-The constant _BudgetsContext_ is no longer of type _any_. Which forces us to use the _BudgetContextInterface_ as a type parameter in the call to the genric function _useContext()_.
+The constant _BudgetsContext_ is no longer of type _any_. Which forces us to use the _BudgetsContextInterface_ as a type parameter in the call to the genric function _useContext()_.
 
 ``` typescript
 const BudgetsContext = React.createContext<BudgetsContextInterface>(
@@ -149,7 +149,7 @@ const BudgetsContext = React.createContext<BudgetsContextInterface>(
 );
 ```
 
-The _useBudgets()_ call (mostly used in the UI) will now return an object of type _BudgetContextInterface_.
+The _useBudgets()_ call (mostly used in the UI) will now return an object of type _BudgetsContextInterface_.
 
 Providing the budgets and expenses to the app now can return typed arrays of _Budget_ or _Expense_ from the _LocalStorage_ stored in your browser.
 The function _BudgetsProvider_ implements the methods needed.
